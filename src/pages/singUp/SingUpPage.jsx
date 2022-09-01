@@ -36,7 +36,7 @@ const SingUpPage = () => {
             <p>Back to <span onClick={() => navigate('/login')}>login</span></p>
           </div>
         </div>
-        <span className='exit' onClick={() => navigate('/')}>
+        <span className='exit' onClick={() => navigate('/linkup')}>
           <img src={exit} alt="exit" />
         </span>
       </div>

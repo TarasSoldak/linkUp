@@ -21,7 +21,7 @@ const ProductPage = ({ auth }) => {
       <div className='line'></div>
       <div className='wrapper'>
         <div className="product">
-          <p onClick={() => navigate('/')}>
+          <p onClick={() => navigate('/linkup')}>
             <span>&#8592;</span>
             back
           </p>
@@ -49,7 +49,7 @@ const ProductPage = ({ auth }) => {
             </div>
 
             <div className='mobile-product-text'>
-              <span onClick={() => navigate('/')}>
+              <span onClick={() => navigate('/linkup')}>
                 <img src={mobileArrow} alt="arrow" />
               </span>
               <div className="mobile-product-price">

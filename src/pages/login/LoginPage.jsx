@@ -11,7 +11,7 @@ const LoginPage = ({setAuth}) => {
   const navigate = useNavigate()
   const login = (e) => {
     e.preventDefault()
-    navigate('/')
+    navigate('/linkup')
     setAuth(true)
   }
   return (
@@ -34,7 +34,7 @@ const LoginPage = ({setAuth}) => {
             <p>New user?<span >Sing up</span></p>
           </div>
         </div>
-        <span className='exit' onClick={() => navigate('/')}>
+        <span className='exit' onClick={() => navigate('/linkup')}>
           <img src={exit} alt="exit" />
         </span>
       </div>

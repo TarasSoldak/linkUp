@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route index element={ <MainPage auth={auth}/>}/>
+        <Route path='/linkup' element={ <MainPage auth={auth}/>}/>
         <Route path='/singUp' element={<SingUpPage/>}/>
         <Route path='/login' element={<LoginPage setAuth={setAuth}/>}/>
         <Route path='/product' element={<ProductPage auth={true}/>}/>
