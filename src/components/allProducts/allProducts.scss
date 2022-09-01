@@ -1,0 +1,67 @@
+.products {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+}
+.product-button {
+  margin-top: 1%;
+  margin-bottom: 5%;
+  text-align: center;
+  button {
+    position: relative;
+
+    color: #313131;
+    font-weight: 400;
+    background-color: rgba(168, 172, 184, 0.1);
+    padding: 1.3em 6.8em 1.3em 4.8em;
+    &::after {
+      content: url("../../assets/images/arrowBottom.png");
+      position: absolute;
+      width: 15%;
+      right: 0.5em;
+      top: 0.375em;
+      bottom: 0.375em;
+    }
+  }
+}
+.product-button-mobile {
+  display: none;
+  margin: 46px auto 24px auto;
+  width: 139px;
+
+  button {
+    padding: 17px 28px 17px 31px;
+    background-color: #ffff;
+    box-shadow: 0 4px 19px rgba(0, 0, 0, 0.1);
+
+    img {
+      width: 20px;
+      &:nth-child(1) {
+        margin-right: 38px;
+      }
+    }
+  }
+}
+@media (max-width: 415px) {
+  .products {
+    justify-content: center;
+    gap: 13px;
+
+    .products-item {
+      width: 44%;
+    }
+  }
+  .product-button {
+    margin: 3% auto 5% auto;
+    width: 92%;
+
+    button {
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+  .product-button-mobile {
+    display: block;
+  }
+}

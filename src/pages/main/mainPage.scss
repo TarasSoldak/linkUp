@@ -1,0 +1,11 @@
+@media (max-width: 415px) {
+
+.main{
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  height: 100vh;
+  width: 100%;
+  background: url('../../assets/images/splashScreen.png') 0 0/cover no-repeat;
+}
+}

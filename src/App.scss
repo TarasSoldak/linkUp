@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap');
+.App{
+  font-family: 'Almarai';
+  max-width: 1920px;
+  margin: 0 auto;
+  overflow:hidden;
+  background-color:#ffff;
+.wrapper{
+  max-width: 71.1%;
+  margin: 0 auto;
+}
+.line{
+  width: 100%;
+  border-bottom: 1px solid #A8ACB8;
+}
+}
+@media(max-width:415px) {
+  .App{
+    max-width: 415px;
+    .wrapper{
+      max-width: 100%;
+    }
+    .line{
+      display: none;
+    }
+  }
+}

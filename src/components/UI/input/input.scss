@@ -1,0 +1,28 @@
+input {
+  font-family: inherit;
+  background-color: rgba(239, 239, 239, 0.7);
+  border-radius: 34px;
+  border: none;
+  width: 100%;
+  padding: 1.05em 0 1.06em 1.6em;
+  &::placeholder {
+    color: #a8acb8;
+    font-size: 0.875em;
+    font-weight: 400;
+  }
+}
+@media(max-width:1660px) {
+  input{
+    font-size:0.9rem;
+  }
+}
+@media(max-width:1370px) {
+  input{
+    font-size:0.85rem;
+  }
+}
+@media(max-width:1370px) {
+  input{
+    font-size:0.8rem;
+  }
+}
