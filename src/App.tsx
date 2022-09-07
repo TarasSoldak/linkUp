@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import React, { FC, useState  } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import './App.scss';
-import LoginPage from './pages/login/LoginPage';
-import MainPage from './pages/main/MainPage';
-import ProductPage from './pages/product/ProductPage';
-import SingUpPage from './pages/singUp/SingUpPage';
+import LoginPage from './pages/login/LoginPage'
+import MainPage from './pages/main/MainPage'
+import ProductPage from './pages/product/ProductPage'
+import SingUpPage from './pages/singUp/SingUpPage'
 
-function App() {
+const App:FC =() =>{
   const [auth, setAuth]=useState(false)
   return (
     <div className="App">

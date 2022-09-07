@@ -21,83 +21,87 @@
       font-weight: bold;
 
       width: 41.5%;
-      h2{
+      h2 {
         font-size: 2.125em;
-        color:#313131;
+        color: #313131;
         margin-bottom: 8px;
       }
-      p{
-        color: #A8ACB8;
+      p {
+        color: #a8acb8;
         font-size: 0.875em;
         margin-bottom: 2.42em;
       }
       input {
         margin-bottom: 0.94em;
       }
-      button{
+      button {
         font-weight: bold;
         margin-top: 1.5em;
         width: 100%;
-
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
       }
     }
     .form-block-item {
       display: flex;
       gap: 0.94em;
     }
-    .back{
+    .back {
       position: absolute;
       bottom: 0;
       left: 46%;
-      p{
-       span{
-        color:#3BBEB6 ;
-        font-weight: bold;
-        cursor: pointer;
-       } 
+      p {
+        a {
+          text-decoration: none;
+          span {
+            color: #3bbeb6;
+            font-weight: bold;
+            cursor: pointer;
+          }
+        }
       }
     }
   }
-  .exit{
-  position: absolute;
-  top: 2.5em;
-  right: 2.5em;
-  cursor: pointer;
-    img{
+  .exit {
+    position: absolute;
+    top: 2.5em;
+    right: 2.5em;
+    cursor: pointer;
+    img {
       width: 12px;
     }
   }
 }
-@media(max-width:415px) {
- .sing-up{
-  .sing-up-img{
-    display: none;
-  }
-  .sing-up-form{
-    align-items: center;
-    .form-block-item{
-      display: block;
+@media (max-width: 415px) {
+  .sing-up {
+    .sing-up-img {
+      display: none;
     }
-    .back{
-      left: 41%;
-    }
-    .form-block{
-      width: 100%;
-      margin-left: 38px;
-      margin-right: 38px;
-      button{
-        font-size: 14px;
+    .sing-up-form {
+      align-items: center;
+      .form-block-item {
+        display: block;
       }
-    input{
-      margin-bottom: 15px;
-      padding: 16px 0 16px 22px;
-      &::placeholder{
-        font-size: 12px;
-
+      .back {
+        left: 41%;
+      }
+      .form-block {
+        width: 100%;
+        margin-left: 38px;
+        margin-right: 38px;
+        button {
+          font-size: 14px;
+        }
+        input {
+          margin-bottom: 15px;
+          padding: 16px 0 16px 22px;
+          &::placeholder {
+            font-size: 12px;
+          }
+        }
       }
     }
-    }
   }
-
- } 
 }
