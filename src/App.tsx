@@ -1,4 +1,4 @@
-import React, { FC, useState  } from 'react'
+import React, { FC } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import './App.scss';
 import LoginPage from './pages/login/LoginPage'
@@ -7,14 +7,13 @@ import ProductPage from './pages/product/ProductPage'
 import SingUpPage from './pages/singUp/SingUpPage'
 
 const App:FC =() =>{
-  const [auth, setAuth]=useState(false)
   return (
     <div className="App">
       <Routes>
-        <Route path='/linkup' element={ <MainPage auth={auth}/>}/>
+        <Route path='/linkup' element={ <MainPage/>}/>
         <Route path='/singUp' element={<SingUpPage/>}/>
-        <Route path='/login' element={<LoginPage setAuth={setAuth}/>}/>
-        <Route path='/product' element={<ProductPage auth={true}/>}/>
+        <Route path='/login' element={<LoginPage/>}/>
+        <Route path='/product' element={<ProductPage/>}/>
       </Routes>
     </div>
   );

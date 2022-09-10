@@ -39,6 +39,9 @@
         margin-top: 97%;
         margin-bottom: 2.42em;
         text-align: center;
+        a{
+          text-decoration: none;
+          color: inherit;
         p {
           span {
             color: #3bbeb6;
@@ -47,6 +50,7 @@
           }
         }
       }
+    }
     }
     .exit {
       position: absolute;

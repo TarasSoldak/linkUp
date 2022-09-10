@@ -11,12 +11,12 @@ import arrowBottom from '../../assets/images/arrowBottom.png'
 import Button from '../../components/UI/button/Button'
 import { useNavigate } from 'react-router-dom'
 
-const ProductPage = ({ auth }) => {
+const ProductPage = () => {
   const navigate = useNavigate()
   return (
     <>
       <div className='wrapper product-header'>
-        <Header auth={auth} />
+        <Header/>
       </div>
       <div className='line'></div>
       <div className='wrapper'>

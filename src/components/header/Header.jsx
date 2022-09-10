@@ -6,8 +6,10 @@ import Input from '../UI/input/Input'
 import './header.scss'
 import Button from '../UI/button/Button'
 import { useNavigate } from 'react-router-dom'
+import { useAppSelector } from '../../hooks/hooks'
 
-const Header = ({ auth, setOpenCart }) => {
+const Header = ({ setOpenCart }) => {
+  const {isAuth}=useAppSelector(state=>state.login)
   const navigate = useNavigate()
   return (
     <header>
@@ -22,7 +24,7 @@ const Header = ({ auth, setOpenCart }) => {
           <span>3</span>
         </div>
       </div>
-      {!auth ?
+      {!isAuth ?
         <div className='header-button-block'>
           <div className='header-button'>
             <Button onClick={() => navigate('/login')}>

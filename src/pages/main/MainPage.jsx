@@ -6,7 +6,7 @@ import Header from '../../components/header/Header'
 import MyCart from '../../components/myCart/MyCart'
 import './mainPage.scss'
 
-const MainPage = ({auth}) => {
+const MainPage = () => {
   const [openCart, setOpenCart]=useState(false)
   const [splashScreen, setSplashScreen]=useState(true)
   return (
@@ -14,7 +14,7 @@ const MainPage = ({auth}) => {
     <div className={splashScreen ?'main': null} onClick={()=>setSplashScreen(false)}></div>
       
     <div className="wrapper">
-    <Header auth={auth} setOpenCart={setOpenCart}/>
+    <Header setOpenCart={setOpenCart}/>
     </div>
       <div className='line'></div>
       <div className="wrapper">
