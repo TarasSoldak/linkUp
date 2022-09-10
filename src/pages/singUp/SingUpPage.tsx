@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import singUpImg from '../../assets/images/singUpImg.png'
 import exit from '../../assets/images/exit.png'
 import Button from '../../components/UI/button/Button'
@@ -20,9 +20,14 @@ const SingUpPage: FC = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { isLoading, isError, success } = useAppSelector(state => state.singUp)
-  if (success) {
-    navigate('/login')
-  }
+
+  useEffect(() => {
+    if (success) {
+      navigate('/login')
+    }
+  }, [success,navigate])
+  
+ 
   return (
     <div className='sing-up'>
       <div className="sing-up-img">

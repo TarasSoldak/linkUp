@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import loginImg from '../../assets/images/loginImg.png'
 import Button from '../../components/UI/button/Button'
@@ -18,9 +18,14 @@ const LoginPage: FC = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { isLoading, isError, isAuth } = useAppSelector(state => state.login)
-  if(isAuth){
-     navigate('/linkUp')
-  }
+
+  useEffect(() => {
+    if(isAuth){
+      navigate('/linkUp')
+   }
+  }, [isAuth, navigate])
+  
+ 
 
   return (
     <div className='login'>
