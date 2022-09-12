@@ -36,7 +36,7 @@
         width: 100%;
       }
       .back {
-        margin-top: 97%;
+        margin-top: 239px;
         margin-bottom: 2.42em;
         text-align: center;
         a{
@@ -63,10 +63,20 @@
     }
   }
 }
-@media (max-width: 415px) {
+@media (max-width: 1020px) {
+  .login{
+      .login-form{
+        .login-form-block{
+          width: 70%;
+
+        }
+      }
+  }
+}
+@media (max-width: 500px) {
   .login {
     height: 100vh;
-    background: url('../../assets/images/mobileTitleImg.png')120px 90px   no-repeat,
+    background: url('../../assets/images/mobileTitleImg.png')50% 90px   no-repeat,
     url("../../assets/images/mobileLoginBg.png") 0 0 / cover;
     .login-img {
       display: none;

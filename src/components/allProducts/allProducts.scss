@@ -43,7 +43,16 @@
     }
   }
 }
-@media (max-width: 415px) {
+@media (max-width: 770px) {
+  .products {
+    justify-content: space-between;
+
+    .products-item {
+      width: 30%;
+    }
+  }
+}
+@media (max-width: 500px) {
   .products {
     justify-content: center;
     gap: 13px;

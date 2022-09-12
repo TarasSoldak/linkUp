@@ -68,7 +68,21 @@
     }
   }
 }
-@media(max-width:415px) {
+@media(max-width:1120px) {
+  .my-cart{
+    .my-cart-block{
+      width: 45%;
+    }
+}
+}
+@media(max-width:770px) {
+  .my-cart{
+    .my-cart-block{
+      width: 60%;
+    }
+}
+}
+@media(max-width:500px) {
   .my-cart{
     .my-cart-block{
       width: 100%;

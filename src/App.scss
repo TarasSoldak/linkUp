@@ -28,9 +28,16 @@
   font-weight: bold;
 }
 }
-@media(max-width:415px) {
+@media(max-width:1050px) {
   .App{
-    max-width: 415px;
+    max-width: 100%;
+    .wrapper{
+      max-width: 95%;
+    }
+  }
+}
+@media(max-width:500px) {
+  .App{
     .wrapper{
       max-width: 100%;
     }

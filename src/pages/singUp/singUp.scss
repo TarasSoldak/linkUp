@@ -74,13 +74,24 @@
     }
   }
 }
-@media (max-width: 415px) {
+@media (max-width: 1020px) {
+  .sing-up {
+    .sing-up-form {
+      .form-block{
+      width: 70%;
+      }
+    }
+  }
+  
+}
+@media (max-width: 500px) {
   .sing-up {
     .sing-up-img {
       display: none;
     }
     .sing-up-form {
       align-items: center;
+
       .form-block-item {
         display: block;
       }
