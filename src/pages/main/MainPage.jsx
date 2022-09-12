@@ -9,6 +9,11 @@ import './mainPage.scss'
 const MainPage = () => {
   const [openCart, setOpenCart]=useState(false)
   const [splashScreen, setSplashScreen]=useState(true)
+  
+
+
+
+
   return (
     <>
     <div className={splashScreen ?'main': null} onClick={()=>setSplashScreen(false)}></div>
