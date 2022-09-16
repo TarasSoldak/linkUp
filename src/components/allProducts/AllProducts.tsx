@@ -3,22 +3,29 @@ import './allProducts.scss'
 import mobileTrolley from '../../assets/images/mobileTrolley.png'
 import mobileHome from '../../assets/images/mobileHome.png'
 import Button from '../UI/button/Button'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ProductItem from '../productItem/ProductItem'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchAllProducts } from '../../store/reducers/allProductsSlice'
+import { fetchProductDetails } from '../../store/reducers/productDetailsSlice'
 
 interface ProductsProps{
   setOpenCart:(bool:boolean)=>void
 }
 
 const AllProducts:FC<ProductsProps> = ({ setOpenCart }) => {
+  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const {isLoading,isError,items } = useAppSelector(state => state.allProducts)
 
   useEffect(() => {
     dispatch(fetchAllProducts())
   }, [dispatch])
+
+  const setProductDetails=(id:number)=>{
+    dispatch(fetchProductDetails(id))
+    navigate(`/product/${id}`)
+  }
 
   return (
     <>
@@ -27,7 +34,7 @@ const AllProducts:FC<ProductsProps> = ({ setOpenCart }) => {
       {isLoading && <div className='loading'>Loading...</div>}
         {isError && <div className='fetchError'>{isError}</div>}
         { items.map(item=>{
-          return <ProductItem key={item.id} {...item}/>
+          return <ProductItem  key={item.id} item={item} setProductDetails={setProductDetails}/>
         })}
   
       </div>
