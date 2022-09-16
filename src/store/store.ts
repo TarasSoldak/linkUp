@@ -1,3 +1,4 @@
+import { categoriesSlice } from './reducers/categoriesSlice';
 import { photosBannerSlice } from './reducers/photosBannerImgSlice';
 import { loginSlice } from './reducers/loginSlice';
 import { singUpSlice } from './reducers/singUpSlice';
@@ -7,7 +8,8 @@ export const store = configureStore({
   reducer: {
    singUp:singUpSlice.reducer,
    login:loginSlice.reducer,
-   photosBanner:photosBannerSlice.reducer
+   photosBanner:photosBannerSlice.reducer,
+   categories:categoriesSlice.reducer
   },
 })
 

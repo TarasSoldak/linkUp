@@ -11,15 +11,16 @@
   gap: 1.6%;
  
   .categories-item{
-    .all{
-      color:#3BBEB6;
-      font-weight: bold;
-    }
-    p{
+   
+    .category-name{
       color:#313131;
       margin-top: 1em;
-      font-size: 0.875em;
+      font-size: 1.03rem;
       font-weight: 400;
+    }
+    .name-active{
+      color:#3BBEB6;
+      font-weight: bold;
     }
     .categories-img{
       width: 100%;
