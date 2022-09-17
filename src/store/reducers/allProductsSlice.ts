@@ -17,32 +17,36 @@ export interface IProduct {
   id: number
   name: string
   imageURL: string
-  price:number
-  soldCount:number
+  price: number
+  soldCount: number
 
 }
-interface AllProductsState{
+interface AllProductsState {
   isLoading: boolean
   isError: string
-  items:IProduct[]
+  productQuery: string
+  items: IProduct[]
 }
 
 const initialState: AllProductsState = {
   isLoading: false,
   isError: '',
-  items:[]
+  productQuery: '',
+  items: []
 }
 
 export const allProductsSlice = createSlice({
   name: 'categories',
   initialState,
   reducers: {
-
+    setProductQuery: (state, action) => {
+      state.productQuery = action.payload
+    }
   },
   extraReducers: {
     [fetchAllProducts.fulfilled.type]: (state, action) => {
       state.isLoading = false
-      state.isError=''
+      state.isError = ''
       state.items = action.payload.items
     },
     [fetchAllProducts.rejected.type]: (state, action) => {
@@ -51,12 +55,12 @@ export const allProductsSlice = createSlice({
     },
     [fetchAllProducts.pending.type]: (state) => {
       state.isLoading = true
-      state.isError=''
+      state.isError = ''
 
     }
   },
 })
 
 
-
+export const { setProductQuery } = allProductsSlice.actions
 export default allProductsSlice

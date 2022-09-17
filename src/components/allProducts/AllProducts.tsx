@@ -16,7 +16,7 @@ interface ProductsProps{
 const AllProducts:FC<ProductsProps> = ({ setOpenCart }) => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
-  const {isLoading,isError,items } = useAppSelector(state => state.allProducts)
+  const {isLoading,isError,items, productQuery } = useAppSelector(state => state.allProducts)
 
   useEffect(() => {
     dispatch(fetchAllProducts())
@@ -33,7 +33,8 @@ const AllProducts:FC<ProductsProps> = ({ setOpenCart }) => {
       <div className="products">
       {isLoading && <div className='loading'>Loading...</div>}
         {isError && <div className='fetchError'>{isError}</div>}
-        { items.map(item=>{
+        { items.filter( item=>item.name.toLowerCase().includes(productQuery.toLowerCase()))
+        .map(item=>{
           return <ProductItem  key={item.id} item={item} setProductDetails={setProductDetails}/>
         })}
   

@@ -19,7 +19,7 @@ const ProductItem:FC<IProductProps> = ({item,setProductDetails}) => {
     <p className='product-title'>{item.name}</p>
     <p className='product-text'>{item.soldCount} Sold</p>
     <div className='product-price'>
-      <p>{item.price}</p>
+      <p>${item.price}</p>
       <div className='plus'>
         <img src={plus} alt="plus" />
       </div>

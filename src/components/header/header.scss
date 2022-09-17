@@ -50,15 +50,20 @@ header {
   }
   .header-button-block{
     display: flex;
+    a{
+      text-decoration: none;
+      color: inherit; 
+   }
   }
   .header-button {
     margin-right: 9px;
-
+ 
     button {
       font-weight: 400;
       background-color: #fff;
       color: #313131;
       border: 1px solid rgba(168, 172, 184, 0.3);
+    
     }
   }
   .auth {
