@@ -8,22 +8,32 @@ import Button from '../UI/button/Button'
 import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { setProductQuery } from '../../store/reducers/allProductsSlice'
+import { setOpenCart } from '../../store/reducers/openCartSlice'
+import {  } from '../../store/reducers/openCartSlice'
+import { cartTotalSelector } from '../../store/selectors'
+import { useSelector } from 'react-redux'
 
-interface HeaderProps {
-  setOpenCart: (bool: boolean) => void
+interface IHeaderProps{
+  setOpenCart:(bool:boolean)=>void
 }
 
-const Header: FC<HeaderProps> = ({ setOpenCart }) => {
+const Header: FC<IHeaderProps> = () => {
   const dispatch = useAppDispatch()
   const { isAuth } = useAppSelector(state => state.login)
   const [searchProduct, setSearchProduct] = useState('')
 
+  const cartTotal =useSelector(cartTotalSelector) as number
+
 
     useEffect(() => {
       dispatch(setProductQuery(searchProduct))
-        // setSearchProduct('')
     }, [dispatch, searchProduct])
     
+  const trolleyHandler=()=>{
+    if(isAuth){
+      dispatch(setOpenCart(true))
+    }
+  }
   
 
   return (
@@ -40,9 +50,9 @@ const Header: FC<HeaderProps> = ({ setOpenCart }) => {
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchProduct(e.target.value)}
         />
       </div>
-      <div className='trolley-wrapper' onClick={() => setOpenCart(true)}>
+      <div className='trolley-wrapper' onClick={trolleyHandler}>
         <div className='trolley-img'>
-          <span>3</span>
+          <span>{cartTotal}</span>
         </div>
       </div>
       {!isAuth ?

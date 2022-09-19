@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Header from '../../components/header/Header'
 import './product.scss'
 import product from '../../assets/images/product.png'
@@ -9,30 +9,38 @@ import mobileArrow from '../../assets/images/mobileArrow.png'
 import mobileInformation from '../../assets/images/mobileInformation.png'
 import arrowBottom from '../../assets/images/arrowBottom.png'
 import Button from '../../components/UI/button/Button'
-import { Link} from 'react-router-dom'
-import { useAppSelector } from '../../hooks/hooks'
+import { Link } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
+import { setOpenCart } from '../../store/reducers/openCartSlice'
+import MyCart from '../../components/myCart/MyCart'
+import { addToCart } from '../../store/reducers/cartSlice'
 
-const ProductPage = () => {
-  const {isError, isLoading, productDetails}=useAppSelector(state=>state.product)
+const ProductPage: FC = () => {
+  const { isError, isLoading, productDetails } = useAppSelector(state => state.product)
+  const openCart = useAppSelector(state => state.cartOpen.openCart)
+  const dispatch = useAppDispatch()
+  const cart = useAppSelector(state => state.cart)
+
+
   return (
     <>
       <div className='wrapper product-header'>
-        <Header/>
+        <Header setOpenCart={setOpenCart} />
       </div>
       <div className='line'></div>
       {isLoading && <div className='loading'>Loading...</div>}
-        {isError && <div className='fetchError'>{isError}</div>}
+      {isError && <div className='fetchError'>{isError}</div>}
       <div className='wrapper'>
         <div className="product">
           <p>
-          <Link to='/linkup'>
-            <span>&#8592;</span>
-            back
-          </Link>
+            <Link to='/linkup'>
+              <span>&#8592;</span>
+              back
+            </Link>
           </p>
           <div className="product-block">
             <div className='product-block-img'>
-              <img src={!productDetails.imageURL ? product :productDetails.imageURL} alt="product" />
+              <img src={!productDetails.imageURL ? product : productDetails.imageURL} alt="product" />
             </div>
 
             <div className="product-block-text">
@@ -42,17 +50,23 @@ const ProductPage = () => {
               <div className='line'></div>
               <div className="product-block-price">
                 <p> ${productDetails.price}</p>
-                <Button>
-                  Add to Cart
-                </Button>
+                {cart.find(cartItem => cartItem.id === productDetails.id)
+
+                  ? <Button disabled={true}>
+                    Added to Cart
+                  </Button>
+                  : <Button onClick={() => dispatch(addToCart(productDetails))}>
+                    Add to Cart
+                  </Button>
+                }
               </div>
             </div>
 
             <div className='mobile-product-text'>
               <Link to='/linkup'>
-              <span>
-                <img src={mobileArrow} alt="arrow" />
-              </span>
+                <span>
+                  <img src={mobileArrow} alt="arrow" />
+                </span>
               </Link>
               <div className="mobile-product-price">
                 <p>{productDetails.price} qar</p>
@@ -119,14 +133,16 @@ const ProductPage = () => {
               <img src={arrowBottom} alt="arrowBottom" />
             </div>
             <div className="mobile-button-item">
-            <Button>
-              Add to Cart
-            </Button>
+              <Button>
+                Add to Cart
+              </Button>
             </div>
-           
+
           </div>
         </div>
       </div>
+      {openCart && <MyCart />}
+
     </>
   )
 }

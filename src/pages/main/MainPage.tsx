@@ -4,11 +4,13 @@ import Banner from '../../components/banner/Banner'
 import Categories from '../../components/categories/Categories'
 import Header from '../../components/header/Header'
 import MyCart from '../../components/myCart/MyCart'
+import { useAppSelector } from '../../hooks/hooks'
+import { setOpenCart } from '../../store/reducers/openCartSlice'
 import './mainPage.scss'
 
 const MainPage:FC = () => {
-  const [openCart, setOpenCart]=useState<boolean>(false)
   const [splashScreen, setSplashScreen]=useState<boolean>(true)
+  const openCart= useAppSelector(state=>state.cartOpen.openCart)
   
 
 
@@ -25,9 +27,9 @@ const MainPage:FC = () => {
       <div className="wrapper">
        <Banner />
         <Categories/>
-        <AllProducts setOpenCart={setOpenCart}/>
+        <AllProducts/>
         </div>
-       {openCart && <MyCart setOpenCart={setOpenCart} />}
+       {openCart && <MyCart/>}
     
     </>
   )

@@ -2,7 +2,7 @@ import { getAllProducts } from './../../api/allProductsApi';
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchAllProducts = createAsyncThunk(
-  'allProducts/AllProducts',
+  'allProducts/products',
   async (_, thunkAPI) => {
     try {
       const response = await getAllProducts()
@@ -19,6 +19,7 @@ export interface IProduct {
   imageURL: string
   price: number
   soldCount: number
+  quantity:number
 
 }
 interface AllProductsState {
@@ -36,18 +37,22 @@ const initialState: AllProductsState = {
 }
 
 export const allProductsSlice = createSlice({
-  name: 'categories',
+  name: 'products',
   initialState,
   reducers: {
     setProductQuery: (state, action) => {
       state.productQuery = action.payload
-    }
+    },
+  
+
   },
   extraReducers: {
     [fetchAllProducts.fulfilled.type]: (state, action) => {
       state.isLoading = false
       state.isError = ''
-      state.items = action.payload.items
+      state.items = action.payload.items.map((item:IProduct)=>{
+      return  {...item, added:false}
+      })
     },
     [fetchAllProducts.rejected.type]: (state, action) => {
       state.isLoading = false
@@ -62,5 +67,5 @@ export const allProductsSlice = createSlice({
 })
 
 
-export const { setProductQuery } = allProductsSlice.actions
+export const { setProductQuery} = allProductsSlice.actions
 export default allProductsSlice

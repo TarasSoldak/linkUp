@@ -36,11 +36,14 @@
   flex: 1;
 
 .plus-minus-block{
+
   width: 100%;
   display: flex;
   gap: 13px;
   align-items: center;
   .plus-minus-img{
+    border: none;
+    background-color: transparent;
     width: 30%;
     img{
       width: 100%;
@@ -50,7 +53,7 @@
   .my-cart-count{
     p{
       font-size: 0.875em;
-      padding-bottom: 8px;
+      padding-bottom: 0.57em;
 
     }
   }

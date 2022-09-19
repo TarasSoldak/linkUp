@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react'
+import React, {FC,useEffect } from 'react'
 import './banner.scss'
 import banner from '../../assets/images/banner.png'
 import bannerTitle from '../../assets/images/bannerTitle.png'
 import { useAppDispatch } from '../../hooks/hooks'
 import { fetchPhotosBanner } from '../../store/reducers/photosBannerImgSlice'
 
-const Banner = () => {
+const Banner:FC = () => {
   const dispatch = useAppDispatch()
   
   useEffect(() => {
