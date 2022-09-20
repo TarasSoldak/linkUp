@@ -3,9 +3,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
 export const fetchAllProducts = createAsyncThunk(
   'allProducts/products',
-  async (_, thunkAPI) => {
+  async (productQuery:string, thunkAPI) => {
     try {
-      const response = await getAllProducts()
+      const response = await getAllProducts(productQuery)
       return response.data
     } catch (error) {
       return thunkAPI.rejectWithValue('Request failed with status code 400')

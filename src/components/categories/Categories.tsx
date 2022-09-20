@@ -3,6 +3,7 @@ import './categories.scss'
 import allCategories from '../../assets/images/allCategories.png'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchCategories } from '../../store/reducers/categoriesSlice'
+import fetchProductsByCategories from '../../store/reducers/productsByCategoriesSlice'
 
 const Categories: FC = () => {
   const [active, setActive] = useState<number | null>(null)
@@ -12,7 +13,10 @@ const Categories: FC = () => {
   useEffect(() => {
     dispatch(fetchCategories())
   }, [dispatch])
-
+const setProductsByCategories=(id:number)=>{
+  dispatch(fetchProductsByCategories(id))
+  setActive(id)
+}
   return (
     <>
       <h3 className='h3'>Categories</h3>
@@ -21,7 +25,7 @@ const Categories: FC = () => {
         {!categories.length && isLoading && <div className='loading'>Loading...</div>}
         {isError && <div className='fetchError'>{isError}</div>}
         {categories && categories.map(category => {
-          return <div className="categories-item" key={category.id} onClick={()=>setActive(category.id)}>
+          return <div className="categories-item" key={category.id} onClick={()=>setProductsByCategories(category.id)}>
             <div className="categories-img">
               <img src={!category.imageURL ? allCategories : category.imageURL} alt="img" />
             </div>

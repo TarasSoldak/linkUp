@@ -17,19 +17,20 @@ const AllProducts: FC = () => {
   const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { isLoading, isError, items, productQuery } = useAppSelector(state => state.allProducts)
+  const { loading, error, itemsByCategories } = useAppSelector(state => state.byCategories)
   const { isAuth } = useAppSelector(state => state.login)
 
   useEffect(() => {
-    dispatch(fetchAllProducts())
-  }, [dispatch])
+    dispatch(fetchAllProducts(productQuery))
+  }, [dispatch, productQuery])
 
   const setProductDetails = (id: number) => {
     dispatch(fetchProductDetails(id))
     navigate(`/product/${id}`)
   }
   const handlerAddToCart = (item: IProduct) => {
-    if(isAuth){
-    dispatch(addToCart(item))
+    if (isAuth) {
+      dispatch(addToCart(item))
     }
 
   }
@@ -38,16 +39,30 @@ const AllProducts: FC = () => {
     <>
       <h3 className='h3'>All products</h3>
       <div className="products">
-        {!items.length && isLoading && <div className='loading'>Loading...</div>}
-        {isError && <div className='fetchError'>{isError}</div>}
-        {items.filter(item => item.name.toLowerCase().includes(productQuery.toLowerCase()))
-          .map(item => {
-            return <ProductItem
-              key={item.id} item={item}
-              setProductDetails={setProductDetails}
-              handlerAddToCart={handlerAddToCart} />
-          })}
-
+        {!itemsByCategories.length ?
+          <>
+            {!items.length && isLoading && <div className='loading'>Loading...</div>}
+            {isError && <div className='fetchError'>{isError}</div>}
+            {items.filter(item => item.name.toLowerCase().includes(productQuery.toLowerCase()))
+              .map(item => {
+                return <ProductItem
+                  key={item.id} item={item}
+                  setProductDetails={setProductDetails}
+                  handlerAddToCart={handlerAddToCart} />
+              })}
+          </>
+          : <>
+            { loading && <div className='loading'>Loading...</div>}
+            {error && <div className='fetchError'>{isError}</div>}
+            {itemsByCategories.filter(item => item.name.toLowerCase().includes(productQuery.toLowerCase()))
+              .map(item => {
+                return <ProductItem
+                  key={item.id} item={item}
+                  setProductDetails={setProductDetails}
+                  handlerAddToCart={handlerAddToCart} />
+              })}
+          </>
+        }
       </div>
       <div className="product-button">
         <Button>
