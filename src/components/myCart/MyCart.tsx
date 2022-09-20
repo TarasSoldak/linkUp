@@ -29,6 +29,7 @@ const MyCart:FC = () => {
   const handlerClear=(id:number)=>{
   dispatch(clear(id))
   }
+
   return (
     <div className='my-cart'>
       <img src={myCartBg} alt="myCartBg" />
@@ -57,7 +58,7 @@ const MyCart:FC = () => {
                 <p>Total Price</p>
               </div>
               <div className="total-count-button">
-                <Button onClick={() => setCompleted(true)}>Checkout</Button>
+                <Button onClick={()=>setCompleted(true)}>Checkout</Button>
               </div>
             </div>
           </>}

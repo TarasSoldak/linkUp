@@ -50,9 +50,7 @@ export const allProductsSlice = createSlice({
     [fetchAllProducts.fulfilled.type]: (state, action) => {
       state.isLoading = false
       state.isError = ''
-      state.items = action.payload.items.map((item:IProduct)=>{
-      return  {...item, added:false}
-      })
+      state.items = action.payload.items
     },
     [fetchAllProducts.rejected.type]: (state, action) => {
       state.isLoading = false

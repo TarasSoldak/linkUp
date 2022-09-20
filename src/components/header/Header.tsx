@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { setProductQuery } from '../../store/reducers/allProductsSlice'
 import { setOpenCart } from '../../store/reducers/openCartSlice'
-import {  } from '../../store/reducers/openCartSlice'
 import { cartTotalSelector } from '../../store/selectors'
 import { useSelector } from 'react-redux'
 

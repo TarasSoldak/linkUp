@@ -133,9 +133,14 @@ const ProductPage: FC = () => {
               <img src={arrowBottom} alt="arrowBottom" />
             </div>
             <div className="mobile-button-item">
-              <Button>
-                Add to Cart
-              </Button>
+              {cart.find(cartItem => cartItem.id === productDetails.id)
+                ? <Button disabled={true}>
+                  Added to Cart
+                </Button>
+                : <Button onClick={() => dispatch(addToCart(productDetails))}>
+                  Add to Cart
+                </Button>
+              }
             </div>
 
           </div>

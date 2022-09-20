@@ -38,7 +38,7 @@ const AllProducts: FC = () => {
     <>
       <h3 className='h3'>All products</h3>
       <div className="products">
-        {isLoading && <div className='loading'>Loading...</div>}
+        {!items.length && isLoading && <div className='loading'>Loading...</div>}
         {isError && <div className='fetchError'>{isError}</div>}
         {items.filter(item => item.name.toLowerCase().includes(productQuery.toLowerCase()))
           .map(item => {
