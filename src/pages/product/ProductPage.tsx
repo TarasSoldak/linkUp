@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import Header from '../../components/header/Header'
 import './product.scss'
 import product from '../../assets/images/product.png'
@@ -9,53 +9,69 @@ import mobileArrow from '../../assets/images/mobileArrow.png'
 import mobileInformation from '../../assets/images/mobileInformation.png'
 import arrowBottom from '../../assets/images/arrowBottom.png'
 import Button from '../../components/UI/button/Button'
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
+import { setOpenCart } from '../../store/reducers/openCartSlice'
+import MyCart from '../../components/myCart/MyCart'
+import { addToCart } from '../../store/reducers/cartSlice'
 
-const ProductPage = () => {
-  const navigate = useNavigate()
+const ProductPage: FC = () => {
+  const { isError, isLoading, productDetails } = useAppSelector(state => state.product)
+  const openCart = useAppSelector(state => state.cartOpen.openCart)
+  const dispatch = useAppDispatch()
+  const cart = useAppSelector(state => state.cart)
+
+
   return (
     <>
       <div className='wrapper product-header'>
-        <Header/>
+        <Header setOpenCart={setOpenCart} />
       </div>
       <div className='line'></div>
+      {isLoading && <div className='loading'>Loading...</div>}
+      {isError && <div className='fetchError'>{isError}</div>}
       <div className='wrapper'>
         <div className="product">
-          <p onClick={() => navigate('/linkup')}>
-            <span>&#8592;</span>
-            back
+          <p>
+            <Link to='/linkup'>
+              <span>&#8592;</span>
+              back
+            </Link>
           </p>
           <div className="product-block">
             <div className='product-block-img'>
-              <img src={product} alt="product" />
+              <img src={!productDetails.imageURL ? product : productDetails.imageURL} alt="product" />
             </div>
 
             <div className="product-block-text">
-              <h2>Wiley Saddle Bag - Fossil</h2>
-              <p>234 Sold</p>
-              <p>Finish every look on a note of Parisian
-                chic with the Lou Camera crossbody bag
-                from Saint Laurent, presented here in
-                cream beige. Made in Italy from chevron
-                matelassé leather, the design is
-                adorned with golden hardware.</p>
+              <h2>{productDetails.name}</h2>
+              <p>{productDetails.soldCount} Sold</p>
+              <p>{productDetails.description}</p>
               <div className='line'></div>
               <div className="product-block-price">
-                <p>$180.00</p>
-                <Button>
-                  Add to Cart
-                </Button>
+                <p> ${productDetails.price}</p>
+                {cart.find(cartItem => cartItem.id === productDetails.id)
+
+                  ? <Button disabled={true}>
+                    Added to Cart
+                  </Button>
+                  : <Button onClick={() => dispatch(addToCart(productDetails))}>
+                    Add to Cart
+                  </Button>
+                }
               </div>
             </div>
 
             <div className='mobile-product-text'>
-              <span onClick={() => navigate('/linkup')}>
-                <img src={mobileArrow} alt="arrow" />
-              </span>
+              <Link to='/linkup'>
+                <span>
+                  <img src={mobileArrow} alt="arrow" />
+                </span>
+              </Link>
               <div className="mobile-product-price">
-                <p>180 qar</p>
-                <p>Wiley Saddle Bag - Fossil</p>
-                <p>234 Sold</p>
+                <p>{productDetails.price} qar</p>
+                <p>{productDetails.name}</p>
+                <p>{productDetails.soldCount} Sold</p>
 
               </div>
               <div className="mobile-product-description">
@@ -117,14 +133,21 @@ const ProductPage = () => {
               <img src={arrowBottom} alt="arrowBottom" />
             </div>
             <div className="mobile-button-item">
-            <Button>
-              Add to Cart
-            </Button>
+              {cart.find(cartItem => cartItem.id === productDetails.id)
+                ? <Button disabled={true}>
+                  Added to Cart
+                </Button>
+                : <Button onClick={() => dispatch(addToCart(productDetails))}>
+                  Add to Cart
+                </Button>
+              }
             </div>
-           
+
           </div>
         </div>
       </div>
+      {openCart && <MyCart />}
+
     </>
   )
 }

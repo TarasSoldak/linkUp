@@ -13,7 +13,7 @@ const App:FC =() =>{
         <Route path='/linkup' element={ <MainPage/>}/>
         <Route path='/singUp' element={<SingUpPage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
-        <Route path='/product' element={<ProductPage/>}/>
+        <Route path='/product/:id' element={<ProductPage/>}/>
       </Routes>
     </div>
   );
