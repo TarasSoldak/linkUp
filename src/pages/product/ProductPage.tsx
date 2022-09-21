@@ -14,13 +14,20 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { setOpenCart } from '../../store/reducers/openCartSlice'
 import MyCart from '../../components/myCart/MyCart'
 import { addToCart } from '../../store/reducers/cartSlice'
+import { IProductDetails } from '../../store/reducers/productDetailsSlice'
 
 const ProductPage: FC = () => {
   const { isError, isLoading, productDetails } = useAppSelector(state => state.product)
+  const { isAuth } = useAppSelector(state => state.login)
   const openCart = useAppSelector(state => state.cartOpen.openCart)
   const dispatch = useAppDispatch()
   const cart = useAppSelector(state => state.cart)
 
+  const addProductHandler = (product: IProductDetails) => {
+    if (isAuth) {
+      dispatch(addToCart(product))
+    }
+  }
 
   return (
     <>
@@ -55,7 +62,7 @@ const ProductPage: FC = () => {
                   ? <Button disabled={true}>
                     Added to Cart
                   </Button>
-                  : <Button onClick={() => dispatch(addToCart(productDetails))}>
+                  : <Button onClick={() => addProductHandler(productDetails)}>
                     Add to Cart
                   </Button>
                 }
@@ -137,7 +144,7 @@ const ProductPage: FC = () => {
                 ? <Button disabled={true}>
                   Added to Cart
                 </Button>
-                : <Button onClick={() => dispatch(addToCart(productDetails))}>
+                : <Button onClick={() => addProductHandler(productDetails)}>
                   Add to Cart
                 </Button>
               }

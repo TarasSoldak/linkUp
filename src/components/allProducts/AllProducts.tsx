@@ -32,7 +32,11 @@ const AllProducts: FC = () => {
     if (isAuth) {
       dispatch(addToCart(item))
     }
-
+  }
+  const handlerOpenCart = (bool:boolean) => {
+    if (isAuth) {
+      dispatch(setOpenCart(bool))
+    }
   }
 
   return (
@@ -71,8 +75,8 @@ const AllProducts: FC = () => {
       </div>
       <div className="product-button-mobile">
         <Button>
-          <Link to='/singUp'><img src={mobileHome} alt="home" /></Link>
-          <img src={mobileTrolley} alt="trolley" onClick={() => dispatch(setOpenCart(true))} />
+          <Link to='/singUp'><img src={mobileHome} alt="singUp" /></Link>
+          <img src={mobileTrolley} alt="trolley" onClick={() => handlerOpenCart(true)} />
         </Button>
       </div>
     </>
