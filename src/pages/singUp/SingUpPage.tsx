@@ -23,7 +23,7 @@ const SingUpPage: FC = () => {
   const {isAuth } = useAppSelector(state => state.login)
 
   useEffect(() => {
-    if (success && isAuth) {
+    if (success) {
       navigate('/login')
     }
   }, [success,navigate, isAuth])
