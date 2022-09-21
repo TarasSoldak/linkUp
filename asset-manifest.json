@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/linkup/static/css/main.18555e9d.css",
-    "main.js": "/linkup/static/js/main.87f94077.js",
+    "main.css": "/linkup/static/css/main.8cdd0c05.css",
+    "main.js": "/linkup/static/js/main.37635949.js",
     "static/media/loginImg.png": "/linkup/static/media/loginImg.d65d5247ef204f18f729.png",
     "static/media/banner.png": "/linkup/static/media/banner.9b8bd95529a0dd41abf6.png",
     "static/media/singUpImg.png": "/linkup/static/media/singUpImg.82f7db74372edb1268fa.png",
@@ -12,33 +12,16 @@
     "static/media/mobileLoginBg.png": "/linkup/static/media/mobileLoginBg.8fce963ba31b88992e08.png",
     "static/media/mobileInformation.png": "/linkup/static/media/mobileInformation.3523119bb20b731be9d8.png",
     "static/media/mobileProductBg.png": "/linkup/static/media/mobileProductBg.2a0caed2959c34879018.png",
-    "static/media/earring.png": "/linkup/static/media/earring.e24348de8f4946a63f57.png",
-    "static/media/bag.png": "/linkup/static/media/bag.f5e0a68bc35e975deb7f.png",
     "static/media/product.png": "/linkup/static/media/product.333fae8705928e1dc457.png",
-    "static/media/miniBag.png": "/linkup/static/media/miniBag.e28ff2b1a818f3ed93f8.png",
-    "static/media/manBag.png": "/linkup/static/media/manBag.ae72811d9ebd6859d1ed.png",
-    "static/media/decoration.png": "/linkup/static/media/decoration.b13fada2b72021135f8e.png",
-    "static/media/womanBag.png": "/linkup/static/media/womanBag.65271018af8fa31b5280.png",
-    "static/media/hoop.png": "/linkup/static/media/hoop.80619ca3fe09f96150e6.png",
-    "static/media/multiBag.png": "/linkup/static/media/multiBag.5c020d39be8ef017e650.png",
-    "static/media/food.png": "/linkup/static/media/food.4ee2107d916d3f6adbfb.png",
     "static/media/basketBag.png": "/linkup/static/media/basketBag.aeb2a7924f95408656d6.png",
-    "static/media/diet.png": "/linkup/static/media/diet.8e2dd8bdf80a34802e33.png",
-    "static/media/gifts.png": "/linkup/static/media/gifts.1c3e5dee4dd1b04e1340.png",
-    "static/media/clothes.png": "/linkup/static/media/clothes.974eeb869bb967dea4a1.png",
-    "static/media/gaming.png": "/linkup/static/media/gaming.f904c5143b4c319824f5.png",
-    "static/media/coffee.png": "/linkup/static/media/coffee.fe9e2acd5a475ddc88ef.png",
-    "static/media/accessories.png": "/linkup/static/media/accessories.457cd5ddf38234e49051.png",
     "static/media/allCategories.png": "/linkup/static/media/allCategories.7580a3b471e5e350a042.png",
-    "static/media/beauty.png": "/linkup/static/media/beauty.10fba269f958c01aefea.png",
-    "static/media/myCartEarring.png": "/linkup/static/media/myCartEarring.18b5f036f5e01c15bf21.png",
     "static/media/myCartBg.png": "/linkup/static/media/myCartBg.6b8fd7839572ff6e68ff.png",
     "index.html": "/linkup/index.html",
-    "main.18555e9d.css.map": "/linkup/static/css/main.18555e9d.css.map",
-    "main.87f94077.js.map": "/linkup/static/js/main.87f94077.js.map"
+    "main.8cdd0c05.css.map": "/linkup/static/css/main.8cdd0c05.css.map",
+    "main.37635949.js.map": "/linkup/static/js/main.37635949.js.map"
   },
   "entrypoints": [
-    "static/css/main.18555e9d.css",
-    "static/js/main.87f94077.js"
+    "static/css/main.8cdd0c05.css",
+    "static/js/main.37635949.js"
   ]
 }
