@@ -19,17 +19,7 @@ export interface IFormSingUp {
 const SingUpPage: FC = () => {
   const dispatch = useAppDispatch()
   const { isLoading, isError, success } = useAppSelector(state => state.singUp)
-  const {isAuth } = useAppSelector(state => state.login)
 
-<<<<<<< HEAD
-  useEffect(() => {
-    if (success) {
-      navigate('/login')
-    }
-  }, [success,navigate, isAuth])
-  
-=======
->>>>>>> development
  
 
 
