@@ -1,13 +1,13 @@
-import React, { FC, useEffect } from 'react'
+import React, { FC } from 'react'
 import singUpImg from '../../assets/images/singUpImg.png'
 import exit from '../../assets/images/exit.png'
 import Button from '../../components/UI/button/Button'
 import Input from '../../components/UI/input/Input'
 import './singUp.scss'
-import { Link, useNavigate } from 'react-router-dom'
 import { Formik } from 'formik'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchSingUp } from '../../store/reducers/singUpSlice'
+import { Link } from 'react-router-dom'
 
 export interface IFormSingUp {
   firstName: string
@@ -17,17 +17,12 @@ export interface IFormSingUp {
 }
 
 const SingUpPage: FC = () => {
-  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { isLoading, isError, success } = useAppSelector(state => state.singUp)
 
-  useEffect(() => {
-    if (success) {
-      navigate('/login')
-    }
-  }, [success,navigate])
-  
  
+
+
   return (
     <div className='sing-up'>
       <div className="sing-up-img">
@@ -80,26 +75,26 @@ const SingUpPage: FC = () => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <div className="form-block-item">
-                      {errors.firstName && touched.firstName && errors.firstName}
-                    <Input
-                      placeholder='First Name'
-                      type='text'
-                      name="firstName"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.firstName}
-                    />
-                      {errors.lastName && touched.lastName && errors.lastName}
-                    <Input
-                      placeholder='Last Name'
-                      type='text'
-                      name="lastName"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.lastName}
-                    />
+                  {errors.firstName && touched.firstName && errors.firstName}
+                  <Input
+                    placeholder='First Name'
+                    type='text'
+                    name="firstName"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.firstName}
+                  />
+                  {errors.lastName && touched.lastName && errors.lastName}
+                  <Input
+                    placeholder='Last Name'
+                    type='text'
+                    name="lastName"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.lastName}
+                  />
                 </div>
-                  {errors.email && touched.email && errors.email}
+                {errors.email && touched.email && errors.email}
                 <Input
                   placeholder='Email addres'
                   type='email'
@@ -108,7 +103,7 @@ const SingUpPage: FC = () => {
                   onBlur={handleBlur}
                   value={values.email}
                 />
-                  {errors.password && touched.password && errors.password}
+                {errors.password && touched.password && errors.password}
                 <Input
                   placeholder='Password'
                   type='password'
@@ -117,7 +112,7 @@ const SingUpPage: FC = () => {
                   onBlur={handleBlur}
                   value={values.password}
                 />
-                  {errors.password && touched.password && errors.password}
+                {errors.password && touched.password && errors.password}
                 <Input
                   placeholder='Confirm password'
                   type='passward'
@@ -127,7 +122,10 @@ const SingUpPage: FC = () => {
                   value={values.password}
                 />
                 {isError && <div className='fetchError'>{isError}</div>}
-                <Button type='submit' disabled={isSubmitting}>Next</Button>
+                {success && <div className='loading'>Success</div>}
+                {!success ? <Button type='submit' disabled={isSubmitting}>Next</Button>
+                  : <Button><Link to='/login'>Next</Link></Button>
+                }
               </form>
             )}
           </Formik>

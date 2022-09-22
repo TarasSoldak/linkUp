@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { FC } from 'react'
+import { Link} from 'react-router-dom'
 import loginImg from '../../assets/images/loginImg.png'
 import Button from '../../components/UI/button/Button'
 import Input from '../../components/UI/input/Input'
@@ -15,17 +15,12 @@ export interface IFormLogin {
 }
 
 const LoginPage: FC = () => {
-  const navigate = useNavigate()
   const dispatch = useAppDispatch()
   const { isLoading, isError, isAuth } = useAppSelector(state => state.login)
 
-  useEffect(() => {
-    if(isAuth){
-      navigate('/linkUp')
-   }
-  }, [isAuth, navigate])
-  
- 
+
+
+
 
   return (
     <div className='login'>
@@ -82,7 +77,7 @@ const LoginPage: FC = () => {
                   onBlur={handleBlur}
                   value={values.email}
                 />
-                   <span className='required'>{errors.password && touched.password && errors.password}</span>
+                <span className='required'>{errors.password && touched.password && errors.password}</span>
                 <Input
                   placeholder='Password'
                   type='passward'
@@ -91,13 +86,15 @@ const LoginPage: FC = () => {
                   onBlur={handleBlur}
                   value={values.password}
                 />
+                {isError && <div className='fetchError'>{isError}</div>}
+                {isAuth && <div className='loading'>Success</div>}
                 <Button type='submit' disabled={isSubmitting}>
                   Login
                 </Button>
               </form>
             )}
           </Formik>
-          {isError && <div className='fetchError'>{isError}</div>}
+
 
           <div className="back">
             <Link to='/singUp'> <p>New user?<span>Sing up</span></p></Link>
