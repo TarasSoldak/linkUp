@@ -1,7 +1,7 @@
-import axios from "axios";
+import { instance } from './api';
 
 export const getProductsByCategories = async (id:number) => {
-  const response = await axios
-  .get(`https://linkup-academy.herokuapp.com/api/v1/products?CategoryId=${id}`);
+  const response = await instance
+  .get(`products?CategoryId=${id}`);
   return response
 }

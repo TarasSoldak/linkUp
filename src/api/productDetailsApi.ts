@@ -1,8 +1,8 @@
 import { IProductDetails } from './../store/reducers/productDetailsSlice';
-import axios from "axios";
+import { instance } from './api';
 
 export const getProductDetails = async (id:number) => {
-  const response = await axios
-  .get<IProductDetails>(`https://linkup-academy.herokuapp.com/api/v1/products/${id}`);
+  const response = await instance
+  .get<IProductDetails>(`products/${id}`);
   return response
 }

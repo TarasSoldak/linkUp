@@ -16,9 +16,26 @@ export interface IFormLogin {
 
 const LoginPage: FC = () => {
   const dispatch = useAppDispatch()
-  const { isLoading, isError, isAuth } = useAppSelector(state => state.login)
+  const { isLoading, isError } = useAppSelector(state => state.login)
 
 
+const validate=(values:IFormLogin ) => {
+    const errors = {} as IFormLogin
+    if (!values.email) {
+      errors.email = 'Required';
+
+    } else if (
+      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+    ) {
+      errors.email = 'Invalid email address';
+    }
+
+    if (!values.password) {
+      errors.password = 'Required'
+    }
+    return errors
+
+  }
 
 
 
@@ -36,23 +53,8 @@ const LoginPage: FC = () => {
 
           <Formik
             initialValues={{ email: '', password: '' }}
-            validate={values => {
-              const errors = {} as IFormLogin
-              if (!values.email) {
-                errors.email = 'Required';
-
-              } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              ) {
-                errors.email = 'Invalid email address';
-              }
-
-              if (!values.password) {
-                errors.password = 'Required'
-              }
-              return errors
-
-            }}
+            validate={validate}
+         
             onSubmit={(values: IFormLogin, { setSubmitting }) => {
               dispatch(fetchLogin(values))
               setSubmitting(false)
@@ -87,7 +89,6 @@ const LoginPage: FC = () => {
                   value={values.password}
                 />
                 {isError && <div className='fetchError'>{isError}</div>}
-                {isAuth && <div className='loading'>Success</div>}
                 <Button type='submit' disabled={isSubmitting}>
                   Login
                 </Button>
@@ -97,7 +98,7 @@ const LoginPage: FC = () => {
 
 
           <div className="back">
-            <Link to='/singUp'> <p>New user?<span>Sing up</span></p></Link>
+            <Link to='/singUp'> <p>New user? <span>Sing up</span></p></Link>
           </div>
         </div>
         <span className='exit'>

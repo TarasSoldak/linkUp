@@ -46,7 +46,12 @@
     }
     .form-block-item {
       display: flex;
+      align-items: flex-end;
       gap: 0.94em;
+      .input-name{
+        width: 100%;
+
+      }
     }
     .back {
       position: absolute;

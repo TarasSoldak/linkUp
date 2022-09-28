@@ -21,7 +21,28 @@ const SingUpPage: FC = () => {
   const { isLoading, isError, success } = useAppSelector(state => state.singUp)
 
  
+const validate = (values:IFormSingUp) => {
+  const errors = {} as IFormSingUp;
+  if (!values.email) {
+    errors.email = 'Required';
 
+  } else if (
+    !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+  ) {
+    errors.email = 'Invalid email address';
+  }
+  if (!values.firstName) {
+    errors.firstName = 'Required'
+  }
+  if (!values.lastName) {
+    errors.lastName = 'Required'
+  }
+  if (!values.password) {
+    errors.password = 'Required'
+  }
+  return errors
+
+}
 
   return (
     <div className='sing-up'>
@@ -37,28 +58,7 @@ const SingUpPage: FC = () => {
           {isLoading && <div className='loading'>Loading...</div>}
           <Formik
             initialValues={{ firstName: '', lastName: '', email: '', password: '' }}
-            validate={values => {
-              const errors = {} as IFormSingUp;
-              if (!values.email) {
-                errors.email = 'Required';
-
-              } else if (
-                !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-              ) {
-                errors.email = 'Invalid email address';
-              }
-              if (!values.firstName) {
-                errors.firstName = 'Required'
-              }
-              if (!values.lastName) {
-                errors.lastName = 'Required'
-              }
-              if (!values.password) {
-                errors.password = 'Required'
-              }
-              return errors
-
-            }}
+            validate={validate}
             onSubmit={(values: IFormSingUp, { setSubmitting }) => {
               dispatch(fetchSingUp(values))
               setSubmitting(false)
@@ -75,7 +75,8 @@ const SingUpPage: FC = () => {
             }) => (
               <form onSubmit={handleSubmit}>
                 <div className="form-block-item">
-                  {errors.firstName && touched.firstName && errors.firstName}
+                  <div className='input-name'>
+                 <div className='required'> {errors.firstName && touched.firstName && errors.firstName}</div>
                   <Input
                     placeholder='First Name'
                     type='text'
@@ -84,7 +85,9 @@ const SingUpPage: FC = () => {
                     onBlur={handleBlur}
                     value={values.firstName}
                   />
-                  {errors.lastName && touched.lastName && errors.lastName}
+                  </div>
+                  <div className='input-name'>
+                  <div className='required'>{errors.lastName && touched.lastName && errors.lastName}</div>
                   <Input
                     placeholder='Last Name'
                     type='text'
@@ -93,8 +96,9 @@ const SingUpPage: FC = () => {
                     onBlur={handleBlur}
                     value={values.lastName}
                   />
+                  </div>
                 </div>
-                {errors.email && touched.email && errors.email}
+                <span className='required'>{errors.email && touched.email && errors.email}</span>
                 <Input
                   placeholder='Email addres'
                   type='email'
@@ -103,7 +107,7 @@ const SingUpPage: FC = () => {
                   onBlur={handleBlur}
                   value={values.email}
                 />
-                {errors.password && touched.password && errors.password}
+                <span className='required'>{errors.password && touched.password && errors.password}</span>
                 <Input
                   placeholder='Password'
                   type='password'
@@ -112,7 +116,7 @@ const SingUpPage: FC = () => {
                   onBlur={handleBlur}
                   value={values.password}
                 />
-                {errors.password && touched.password && errors.password}
+                <span className='required'>{errors.password && touched.password && errors.password}</span>
                 <Input
                   placeholder='Confirm password'
                   type='password'
@@ -121,7 +125,6 @@ const SingUpPage: FC = () => {
                   onBlur={handleBlur}
                 />
                 {isError && <div className='fetchError'>{isError}</div>}
-                {success && <div className='loading'>Success</div>}
                 {!success ? <Button type='submit' disabled={isSubmitting}>Next</Button>
                   : <Button><Link to='/login'>Next</Link></Button>
                 }
