@@ -8,6 +8,7 @@ import './login.scss'
 import { Formik } from 'formik'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchLogin } from '../../store/reducers/loginSlice'
+import { LINKUP, SINGUP } from '../../links/links'
 
 export interface IFormLogin {
   email: string
@@ -98,11 +99,11 @@ const validate=(values:IFormLogin ) => {
 
 
           <div className="back">
-            <Link to='/singUp'> <p>New user? <span>Sing up</span></p></Link>
+            <Link to={SINGUP}> <p>New user? <span>Sing up</span></p></Link>
           </div>
         </div>
         <span className='exit'>
-          <Link to='/linkup'><img src={exit} alt="exit" /></Link>
+          <Link to={LINKUP}><img src={exit} alt="exit" /></Link>
         </span>
 
       </div>

@@ -8,6 +8,7 @@ import { Formik } from 'formik'
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks'
 import { fetchSingUp } from '../../store/reducers/singUpSlice'
 import { Link } from 'react-router-dom'
+import { LINKUP, LOGIN } from '../../links/links'
 
 export interface IFormSingUp {
   firstName: string
@@ -126,18 +127,18 @@ const validate = (values:IFormSingUp) => {
                 />
                 {isError && <div className='fetchError'>{isError}</div>}
                 {!success ? <Button type='submit' disabled={isSubmitting}>Next</Button>
-                  : <Button><Link to='/login'>Next</Link></Button>
+                  : <Button><Link to={LOGIN}>Next</Link></Button>
                 }
               </form>
             )}
           </Formik>
 
           <div className="back">
-            <p>Back to <Link to='/login'><span>login</span></Link> </p>
+            <p>Back to <Link to={LOGIN}><span>login</span></Link> </p>
           </div>
         </div>
         <span className='exit'>
-          <Link to='/linkup'><img src={exit} alt="exit" /></Link>
+          <Link to={LINKUP}><img src={exit} alt="exit" /></Link>
         </span>
       </div>
     </div>

@@ -15,6 +15,7 @@ import { setOpenCart } from '../../store/reducers/openCartSlice'
 import MyCart from '../../components/myCart/MyCart'
 import { addToCart } from '../../store/reducers/cartSlice'
 import { IProductDetails } from '../../store/reducers/productDetailsSlice'
+import { LINKUP } from '../../links/links'
 
 const ProductPage: FC = () => {
   const { isError, isLoading, productDetails } = useAppSelector(state => state.product)
@@ -40,7 +41,7 @@ const ProductPage: FC = () => {
       <div className='wrapper'>
         <div className="product">
           <p>
-            <Link to='/linkup'>
+            <Link to={LINKUP}>
               <span>&#8592;</span>
               back
             </Link>
@@ -70,7 +71,7 @@ const ProductPage: FC = () => {
             </div>
 
             <div className='mobile-product-text'>
-              <Link to='/linkup'>
+              <Link to={LINKUP}>
                 <span>
                   <img src={mobileArrow} alt="arrow" />
                 </span>

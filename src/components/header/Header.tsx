@@ -11,6 +11,7 @@ import { setProductQuery } from '../../store/reducers/allProductsSlice'
 import { setOpenCart } from '../../store/reducers/openCartSlice'
 import { cartTotalSelector } from '../../store/selectors'
 import { useSelector } from 'react-redux'
+import { LOGIN, SINGUP } from '../../links/links'
 
 interface IHeaderProps{
   setOpenCart:(bool:boolean)=>void
@@ -58,12 +59,12 @@ const Header: FC<IHeaderProps> = () => {
         <div className='header-button-block'>
           <div className='header-button'>
             <Button>
-              <Link to='/login'>Log in</Link>
+              <Link to={LOGIN}>Log in</Link>
             </Button>
           </div>
           <div>
             <Button>
-              <Link to='/singUp'>Sing up</Link>
+              <Link to={SINGUP}>Sing up</Link>
             </Button>
           </div>
         </div>

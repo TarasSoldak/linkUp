@@ -10,6 +10,7 @@ import { fetchAllProducts, IProduct } from '../../store/reducers/allProductsSlic
 import { fetchProductDetails } from '../../store/reducers/productDetailsSlice'
 import { addToCart } from '../../store/reducers/cartSlice'
 import { setOpenCart } from '../../store/reducers/openCartSlice'
+import { SINGUP } from '../../links/links'
 
 
 
@@ -75,7 +76,7 @@ const AllProducts: FC = () => {
       </div>
       <div className="product-button-mobile">
         <Button>
-          <Link to='/singUp'><img src={mobileHome} alt="singUp" /></Link>
+          <Link to={SINGUP}><img src={mobileHome} alt="singUp" /></Link>
           <img src={mobileTrolley} alt="trolley" onClick={() => handlerOpenCart(true)} />
         </Button>
       </div>
