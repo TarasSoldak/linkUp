@@ -115,11 +115,10 @@ const SingUpPage: FC = () => {
                 {errors.password && touched.password && errors.password}
                 <Input
                   placeholder='Confirm password'
-                  type='passward'
-                  name="password"
+                  type='password'
+                  name="confirmPassword"
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.password}
                 />
                 {isError && <div className='fetchError'>{isError}</div>}
                 {success && <div className='loading'>Success</div>}
