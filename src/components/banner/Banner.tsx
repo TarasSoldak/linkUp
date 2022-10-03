@@ -24,7 +24,7 @@ import Slider from "react-slick";
   return (
 
 
-    <Slider {...settings}>
+    <Slider {...settings} className='slider'>
       <div className='banner'>
         <img src={banner} alt='banner' className='banner-img' />
         <div className='banner-text-wrapper'>
