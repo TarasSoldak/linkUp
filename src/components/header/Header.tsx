@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC, useState } from 'react'
 import logo from '../../assets/images/logoHeader.png'
 import menu from '../../assets/images/menu.png'
 import user from '../../assets/images/user.png'
@@ -25,9 +25,7 @@ const Header: FC<IHeaderProps> = () => {
   const cartTotal =useSelector(cartTotalSelector) as number
 
 
-    useEffect(() => {
-      dispatch(setProductQuery(searchProduct))
-    }, [dispatch, searchProduct])
+   
     
   const trolleyHandler=()=>{
     if(isAuth){
@@ -41,7 +39,7 @@ const Header: FC<IHeaderProps> = () => {
       <div className='logo-wrapper'>
         <img src={logo} alt='logo' />
       </div>
-      <div className='input-wrapper'>
+      <div className='input-wrapper'  onClick={()=>dispatch(setProductQuery(searchProduct))}>
         <Input
           className='search-input'
           placeholder='Search...'
