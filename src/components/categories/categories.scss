@@ -1,57 +1,87 @@
-.h3{
+.h3 {
   font-size: 1.5em;
   font-weight: bold;
   margin-bottom: 1.41em;
 }
-.categories{
+.categories {
   margin-bottom: 5.27%;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
-  gap: 1.6%;
- 
-  .categories-item{
-   cursor: pointer;
-    .category-name{
-      color:#313131;
-      margin-top: 1em;
-      font-size: 1.03rem;
-      font-weight: 400;
-    }
-    .name-active{
-      color:#3BBEB6;
-      font-weight: bold;
-    }
-    .categories-img{
-      width: 100%;
-      img{
+
+  .categories-block {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.6%;
+    .categories-item {
+      cursor: pointer;
+      .category-name {
+        color: #313131;
+        margin-top: 1em;
+        font-size: 1.03rem;
+        font-weight: 400;
+      }
+      .name-active {
+        color: #3bbeb6;
+        font-weight: bold;
+      }
+      .categories-img {
         width: 100%;
+        img {
+          width: 100%;
+        }
       }
     }
   }
 }
-@media(max-width:770px) {
-  .categories{
-    flex-wrap: wrap;
-    justify-content: space-between;
-    .categories-item{
-      width: 25%;
+@media (max-width: 770px) {
+  .categories {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .categories-block {
+      margin: 0 0.2rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      display: flex;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .categories-item {
+      min-width: 25%;
+      margin-bottom: 10px;
       font-size: 14px;
     }
+  }
 }
-}
-@media(max-width:500px) {
-.h3{
-  margin-left: 18px;
-}
- .categories{
-  margin-right:18px;
-  flex-wrap: wrap;
-  justify-content: space-around;
-.categories-item{
-  width: 25%;
-  margin-bottom: 10px;
-  font-size: 14px;
-}
- } 
+
+
+@media (max-width: 500px) {
+  .h3 {
+    margin-left: 18px;
+  }
+  .categories {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .categories-block {
+      margin: 0 1.5rem;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      display: flex;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
+
+    .categories-item {
+      min-width: 25%;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+  }
 }

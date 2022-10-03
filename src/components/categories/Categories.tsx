@@ -24,6 +24,7 @@ const setProductsByCategories=(id:number)=>{
 
         {!categories.length && isLoading && <div className='loading'>Loading...</div>}
         {isError && <div className='fetchError'>{isError}</div>}
+        <div className="categories-block">
         {categories && categories.map(category => {
           return <div className="categories-item" key={category.id} onClick={()=>setProductsByCategories(category.id)}>
             <div className="categories-img">
@@ -32,6 +33,7 @@ const setProductsByCategories=(id:number)=>{
             <p className={`category-name ${active === category.id && 'name-active'}`}>{category.name}</p>
           </div>
         })}
+        </div>
       </div>
     </>
   )
